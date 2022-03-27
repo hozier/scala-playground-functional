@@ -26,13 +26,10 @@ object Exercises {
         )
       }
     }
-    def balance(str: String*): Boolean = {
-      val parens =
-        str.head.toCharArray.filter(char =>
-          char.equals('(') || char.equals(')')
-        )
+    def balance(str: String): Boolean = {
+      val parens = str.toCharArray
+        .filter(char => char.equals('(') || char.equals(')'))
 
-      println(s"parens=${parens.mkString(", ")}")
       isBalancedParens(parens, List()) match {
         case 0 => true
         case _ => false
