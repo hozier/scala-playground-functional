@@ -35,5 +35,17 @@ object Exercises {
         case _ => false
       }
     }
+    def main(): Unit = {
+      Seq(
+        s"\n[Scala FP Fundamentals (Excercises)]",
+        s"balanceParens=${balance("(if (zero? x) max (/ 1 x))")}",
+        s"balanceParens=${balance("I told him (that it’s not (yet) done). (But he wasn’t listening)")}",
+        s"balanceParens=${balance(":-)")}",
+        s"balanceParens=${balance("())(")}",
+        s"balanceParens=${balance("(()))")}",
+        s"balanceParens=${balance("((())")}"
+      )
+        .foreach(println)
+    }
   }
 }

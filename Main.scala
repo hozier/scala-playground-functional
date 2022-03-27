@@ -2,5 +2,6 @@ object Main extends App {
 
   /** execute driver(s)
     */
-  Functional.Operations.main()
+  Fundamentals.Operations.main()
+  Exercises.Operations.main()
 }
