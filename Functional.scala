@@ -26,7 +26,13 @@ object Functional {
       println(s"countFizz=${Operations.countFizz((0 to 31).toList)}")
       println(s"tailRecFactorial=${Operations.tailRecFactorial(3, 1)}")
       println(s"foldToSet=${Operations.foldToSet(List(2, 3, 2, 3))}")
-      // println(s"balanceParens=${Operations.balanceParens(List(2, 3, 2, 3))}")
+      List(
+        s"balanceParens=${Exercises.Operations.balance("(if (zero? x) max (/ 1 x))")}",
+        s"balanceParens=${Exercises.Operations.balance("I told him (that it’s not (yet) done). (But he wasn’t listening)")}",
+        s"balanceParens=${Exercises.Operations.balance(":-)")}",
+        s"balanceParens=${Exercises.Operations.balance("())(")}"
+      )
+        .foreach(println)
     }
   }
 }
