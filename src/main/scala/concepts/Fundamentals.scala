@@ -1,4 +1,4 @@
-object Fundamentals {
+object Fundamentals extends App {
   object Operations {
     def doSum(in: List[Int]): Int = in.fold(0)((acc, item) => acc + item)
     def countFizz(universe: List[Int], FIZZ: Int = 3): Int = {
