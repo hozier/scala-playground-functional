@@ -30,5 +30,32 @@ class Spec extends AnyWordSpec with Matchers {
     "should return false for an expression with a close before open" in {
       Exercises.Operations.balance(")(") should equal(false)
     }
+
+    "should return false for a nested unbalanced expression" in {
+      Exercises.Operations.balance(
+        "(wat (oh (i forgot a close paren))"
+      ) should equal(false)
+    }
+
+    "should return true for a nested balanced expression" in {
+      Exercises.Operations.balance(
+        """I told him (that it’s not (yet) done). (But
+      * he wasn’t listening)"""
+      ) should equal(true)
+    }
+
+    "should return true for a balanced expression" in {
+      Exercises.Operations.balance("(if (zero? x) max (/ 1 x))") should equal(
+        true
+      )
+    }
+
+    "should return false for a simple unbalanced expression" in {
+      Exercises.Operations.balance(":-)") should equal(false)
+    }
+
+    "should return false for a simple unbalanced containing only parens expression" in {
+      Exercises.Operations.balance("())(") should equal(false)
+    }
   }
 }
