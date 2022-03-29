@@ -1,3 +1,5 @@
+package concepts
+
 object Fundamentals {
   object Session {
     def doSum(in: List[Int]): Int = in.fold(0)((acc, item) => acc + item)
@@ -25,22 +27,6 @@ object Fundamentals {
     }
   }
   object Exercise {
-
-    /** Write a recursive function which verifies the balancing of parentheses
-      * in a string. True for:
-      *   - (if (zero? x) max (/ 1 x))
-      *   - I told him (that it’s not (yet) done). (But he wasn’t listening)
-      *     False for:
-      *   - :-)
-      *   - ())( You can use:
-      *   - chars.isEmpty
-      *   - chars.head
-      *   - chars.tail
-      * @param chars
-      *   List[Char] not a String
-      * @return
-      *   true/false if parentheses are balanced
-      */
     def isBalancedParens(chars: Seq[Char], record: List[Char]): Int = {
       if (chars.size == 0) record.size
       else {
