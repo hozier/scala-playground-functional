@@ -29,18 +29,25 @@ object IO {
     object MONAD {
 
       /** task: lazily implement apply via call by name */
-      def apply[A]: (delayed => A) => MONAD[A] = delayed = {
-        new MONAD[A] {
-          def run(): A = delayed
-        }
+      def apply[A](delayed: => A): MONAD[A] = new MONAD[A] {
+        def run(): A = delayed
       }
     }
 
     object MONADTest extends App {
 
-      // Show that map and flatmap works
-
-      // Show that MONAD wont run anything until explicitly calling run
+      /** Show that map and flatmap works
+        *
+        * Show that MONAD wont run anything until explicitly calling run
+        */
+      def main: () => Unit = () => {
+        val helloWorld = for {
+          hello <- MONAD("Hello")
+          helloWorld <- MONAD(hello + " world")
+          printed <- MONAD(println(helloWorld))
+        } yield printed
+        helloWorld.run()
+      }
     }
   }
 }

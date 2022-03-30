@@ -15,7 +15,7 @@ object Fundamentals {
     def foldToSet(xs: List[Int]): Set[Int] = {
       xs.foldLeft(Set.empty[Int])((acc: Set[Int], item: Int) => acc + item)
     }
-    def main: (String*) => Unit = args => {
+    def main: () => Unit = () => {
       Seq(
         s"\n[Scala FP Fundamentals]",
         s"doSum=${doSum((0 to 31).toList)}",
