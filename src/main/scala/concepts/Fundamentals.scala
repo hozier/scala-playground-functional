@@ -15,7 +15,7 @@ object Fundamentals {
     def foldToSet(xs: List[Int]): Set[Int] = {
       xs.foldLeft(Set.empty[Int])((acc: Set[Int], item: Int) => acc + item)
     }
-    def main(args: String*): Unit = {
+    def main: (String*) => Unit = args => {
       Seq(
         s"\n[Scala FP Fundamentals]",
         s"doSum=${doSum((0 to 31).toList)}",
@@ -27,7 +27,7 @@ object Fundamentals {
     }
   }
   object Exercise {
-    def isBalancedParens(chars: Seq[Char], record: List[Char]): Int = {
+    def isBalancedParens: (Seq[Char], List[Char]) => Int = (chars, record) => {
       if (chars.size == 0) record.size
       else {
         isBalancedParens(
@@ -37,7 +37,7 @@ object Fundamentals {
         )
       }
     }
-    def balance(str: String): Boolean = {
+    def balance: String => Boolean = str => {
       val parens = str.toCharArray
         .filter(char => char.equals('(') || char.equals(')'))
 
