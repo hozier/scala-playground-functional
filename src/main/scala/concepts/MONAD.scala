@@ -5,7 +5,7 @@ object IO {
 
     /** @note
       *   implementation of "generic" monad type, mocks functionality of
-      *   cat-effect's IO monad
+      *   cats-effect IO monad
       */
     trait MONAD[A] { self =>
       def run(): A
@@ -41,12 +41,11 @@ object IO {
         * Show that MONAD wont run anything until explicitly calling run
         */
       def main: () => Unit = () => {
-        val helloWorld = for {
+        (for {
           hello <- MONAD("Hello")
           helloWorld <- MONAD(hello + " world")
           printed <- MONAD(println(helloWorld))
-        } yield printed
-        helloWorld.run()
+        } yield printed).run
       }
     }
   }

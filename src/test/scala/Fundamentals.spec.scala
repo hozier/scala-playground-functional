@@ -1,3 +1,5 @@
+package concepts.spec.Fundamentals
+
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers
 import concepts._
