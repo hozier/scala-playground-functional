@@ -16,14 +16,14 @@ object IO {
         */
       def map[B]: (A => B) => BOX[B] = f =>
         BOX {
-          f(self.run)
+          f(self.run())
         }
 
       /** task: implement map, scala docs signature:
         *
         * [B](f: A => BOX[B]): BOX[B]
         */
-      def flatMap[B]: (A => BOX[B]) => BOX[B] = f => f(self.run)
+      def flatMap[B]: (A => BOX[B]) => BOX[B] = f => f(self.run())
     }
 
     object BOX {
@@ -45,7 +45,7 @@ object IO {
           hello <- BOX(delayed = "Hello")
           helloWorld <- BOX(hello + " world")
           printed <- BOX(println(helloWorld))
-        } yield printed).run
+        } yield printed).run()
       }
     }
   }

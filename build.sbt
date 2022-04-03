@@ -1,6 +1,6 @@
 // The simplest possible sbt build file is just one line:
 
-scalaVersion := "2.13.8"
+scalaVersion := "3.0.0"
 // That is, to create a valid sbt build, all you've got to do is define the
 // version of Scala you'd like your project to use.
 
@@ -61,7 +61,7 @@ lazy val root = (project in file(".")).settings(
   inThisBuild(
     List(
       organization := "ch.epfl.scala",
-      scalaVersion := "2.13.8"
+      scalaVersion := "3.0.0"
     )
   ),
   name := "scala-playground"

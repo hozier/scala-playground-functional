@@ -40,6 +40,7 @@ object Fundamentals {
     def balance: String => Boolean = str => {
       val parens = str.toCharArray
         .filter(char => char.equals('(') || char.equals(')'))
+        .toSeq
 
       isBalancedParens(parens, List()) match {
         case 0 => true
