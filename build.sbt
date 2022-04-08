@@ -1,6 +1,6 @@
 // The simplest possible sbt build file is just one line:
 
-scalaVersion := "2.13.8"
+scalaVersion := "3.1.1"
 // That is, to create a valid sbt build, all you've got to do is define the
 // version of Scala you'd like your project to use.
 
@@ -61,7 +61,7 @@ lazy val root = (project in file(".")).settings(
   inThisBuild(
     List(
       organization := "ch.epfl.scala",
-      scalaVersion := "2.13.8"
+      scalaVersion := "3.1.1"
     )
   ),
   name := "scala-playground"
@@ -71,7 +71,16 @@ lazy val root = (project in file(".")).settings(
 // You can define other libraries as dependencies in your build like this:
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.9" % Test
+  "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+  // "core" module - IO, IOApp, schedulers
+  // This pulls in the kernel and std modules automatically.
+  "org.typelevel" %% "cats-effect" % "3.3.11",
+  // concurrency abstractions and primitives (Concurrent, Sync, Async etc.)
+  "org.typelevel" %% "cats-effect-kernel" % "3.3.11",
+  // standard "effect" library (Queues, Console, Random etc.)
+  "org.typelevel" %% "cats-effect-std" % "3.3.11",
+  "org.typelevel" %% "cats-effect-testing-specs2" % "1.4.0" % Test,
+  "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
 )
 
 // To learn more about multi-project builds, head over to the official sbt

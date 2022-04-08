@@ -1,5 +1,7 @@
-object Fundamentals extends App {
-  object Operations {
+package concepts
+
+object Fundamentals {
+  object Session {
     def doSum(in: List[Int]): Int = in.fold(0)((acc, item) => acc + item)
     def countFizz(universe: List[Int], FIZZ: Int = 3): Int = {
       universe.filter(x => x % FIZZ == 0).size
@@ -13,7 +15,7 @@ object Fundamentals extends App {
     def foldToSet(xs: List[Int]): Set[Int] = {
       xs.foldLeft(Set.empty[Int])((acc: Set[Int], item: Int) => acc + item)
     }
-    def main(args: String*): Unit = {
+    def main: () => Unit = () => {
       Seq(
         s"\n[Scala FP Fundamentals]",
         s"doSum=${doSum((0 to 31).toList)}",
@@ -22,6 +24,28 @@ object Fundamentals extends App {
         s"foldToSet=${foldToSet(List(2, 3, 2, 3))}"
       )
         .foreach(println)
+    }
+  }
+  object Exercise {
+    def isBalancedParens: (Seq[Char], List[Char]) => Int = (chars, record) => {
+      if (chars.size == 0) record.size
+      else {
+        isBalancedParens(
+          chars.drop(1),
+          if (chars(0).equals(')') && !record.isEmpty) record.drop(1)
+          else chars(0) :: record
+        )
+      }
+    }
+    def balance: String => Boolean = str => {
+      val parens = str.toCharArray
+        .filter(char => char.equals('(') || char.equals(')'))
+        .toSeq
+
+      isBalancedParens(parens, List()) match {
+        case 0 => true
+        case _ => false
+      }
     }
   }
 }
