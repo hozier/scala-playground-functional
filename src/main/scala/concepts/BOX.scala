@@ -4,8 +4,7 @@ object IO {
   object Exercise {
 
     /** @note
-      *   implementation of "generic" monad type, mocks functionality of
-      *   cats-effect IO monad
+      *   implementation of "generic" monad type, mocks functionality of cats-effect IO monad
       */
     trait BOX[A] { self =>
       def run(): A
@@ -29,7 +28,7 @@ object IO {
     object BOX {
 
       /** task: lazily implement apply via call by name */
-      def apply[A](delayed: => A): BOX[A] = new BOX[A] {
+      def apply[A](delayed: =>A): BOX[A] = new BOX[A] {
         def run(): A = delayed
       }
     }
@@ -40,13 +39,12 @@ object IO {
         *
         * Show that BOX wont run anything until explicitly calling run
         */
-      def main: () => Unit = () => {
+      def main: () => Unit = () =>
         (for {
-          hello <- BOX(delayed = "Hello")
+          hello      <- BOX(delayed = "Hello")
           helloWorld <- BOX(hello + " world")
-          printed <- BOX(println(helloWorld))
+          printed    <- BOX(println(helloWorld))
         } yield printed).run()
-      }
     }
   }
 }

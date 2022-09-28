@@ -12,9 +12,9 @@ scalaVersion := "3.1.1"
 
 // It's possible to define many kinds of settings, such as:
 
-name := "scala-playground"
+name         := "scala-playground"
 organization := "ch.epfl.scala"
-version := "1.0"
+version      := "1.0"
 
 // Note, it's not required for you to define these three settings. These are
 // mostly only necessary if you intend to publish your library's binaries on a
@@ -71,16 +71,16 @@ lazy val root = (project in file(".")).settings(
 // You can define other libraries as dependencies in your build like this:
 
 libraryDependencies ++= Seq(
-  "org.scalatest" %% "scalatest" % "3.2.9" % Test,
+  "org.scalatest" %% "scalatest"                  % "3.2.9" % Test,
   // "core" module - IO, IOApp, schedulers
   // This pulls in the kernel and std modules automatically.
-  "org.typelevel" %% "cats-effect" % "3.3.11",
+  "org.typelevel" %% "cats-effect"                % "3.3.11",
   // concurrency abstractions and primitives (Concurrent, Sync, Async etc.)
-  "org.typelevel" %% "cats-effect-kernel" % "3.3.11",
+  "org.typelevel" %% "cats-effect-kernel"         % "3.3.11",
   // standard "effect" library (Queues, Console, Random etc.)
-  "org.typelevel" %% "cats-effect-std" % "3.3.11",
+  "org.typelevel" %% "cats-effect-std"            % "3.3.11",
   "org.typelevel" %% "cats-effect-testing-specs2" % "1.4.0" % Test,
-  "org.typelevel" %% "munit-cats-effect-3" % "1.0.7" % Test
+  "org.typelevel" %% "munit-cats-effect-3"        % "1.0.7" % Test
 )
 
 // To learn more about multi-project builds, head over to the official sbt
